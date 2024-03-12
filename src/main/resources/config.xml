@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+
+       default-init-method="myInit" default-destroy-method="destroy">
+<!--   ^ Global configuration for all classes that have the specified methods name-->
+
+    <bean id="park_A" class="com.learning.entity.Park" name="first_park">
+        <constructor-arg value="Isla Nublar"/>
+        <property name="cages">
+            <list>
+                <ref bean="cage_1"/>
+                <ref bean="cage_2"/>
+                <ref bean="cage_3"/>
+            </list>
+        </property>
+    </bean>
+
+   <!-- Cages beans-->
+<!--    local configuration for init and destroy methods-->
+    <bean id="cage_1" class="com.learning.entity.Cage" init-method="myInit" destroy-method="destroy">
+        <property name="name" value="Safari"/>
+        <property name="cleanness" value="81"/>
+        <property name="dinosaurs">
+            <list>
+                <ref bean="brachi_1"/>
+                <ref bean="brachi_2"/>
+                <ref bean="steko_1"/>
+                <ref bean="steko_2"/>
+                <ref bean="steko_3"/>
+                <ref bean="galli_1"/>
+                <ref bean="galli_2"/>
+                <ref bean="galli_3"/>
+                <ref bean="galli_4"/>
+                <ref bean="para_1"/>
+                <ref bean="para_2"/>
+                <ref bean="para_3"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="cage_2" class="com.learning.entity.Cage">
+        <property name="name" value="Trex'Den"/>
+        <property name="cleanness" value="72"/>
+        <property name="dinosaurs">
+            <list>
+                <ref bean="trex_1"/>
+                <ref bean="trex_2"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="cage_3" class="com.learning.entity.Cage">
+        <property name="name" value="Raptor's Jungle"/>
+        <property name="cleanness" value="66"/>
+        <property name="dinosaurs">
+            <list>
+                <ref bean="veloci_1"/>
+                <ref bean="veloci_2"/>
+                <ref bean="veloci_3"/>
+                <ref bean="veloci_4"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--Dinosaurs beans-->
+    <bean id="brachi_1" class="com.learning.entity.Dinosaur">
+        <property name="name" value="brachi_leader"/>
+        <property name="species" value="brachiosaurus"/>
+        <property name="age" value="50"/>
+        <property name="health" value="97"/>
+        <property name="popularity" value="95"/>
+    </bean>
+    <bean id="brachi_2" class="com.learning.entity.Dinosaur" >
+        <property name="name" value="brachi_teen1"/>
+        <property name="species" value="brachiosaurus"/>
+        <property name="age" value="10"/>
+        <property name="health" value="100"/>
+        <property name="popularity" value="92"/>
+    </bean>
+    <bean id="steko_1" class="com.learning.entity.Dinosaur">
+        <property name="name" value="steko_leader"/>
+        <property name="species" value="stekosaurus"/>
+        <property name="age" value="41"/>
+        <property name="health" value="98"/>
+        <property name="popularity" value="91"/>
+    </bean>
+    <bean id="steko_2" class="com.learning.entity.Dinosaur" parent="steko_1">
+        <property name="name" value="steko_wing1"/>
+        <property name="age" value="42"/>
+    </bean>
+    <bean id="steko_3" class="com.learning.entity.Dinosaur" parent="steko_1">
+        <property name="name" value="steko_wing2"/>
+        <property name="age" value="38"/>
+    </bean>
+    <bean id="galli_1" class="com.learning.entity.Dinosaur">
+        <property name="name" value="galli_leader"/>
+        <property name="species" value="gallimimus"/>
+        <property name="age" value="32"/>
+        <property name="health" value="100"/>
+        <property name="popularity" value="77"/>
+    </bean>
+    <bean id="galli_2" class="com.learning.entity.Dinosaur" parent="galli_1">
+        <property name="name" value="galli_member1"/>
+        <property name="age" value="29"/>
+        <property name="popularity" value="74"/>
+    </bean>
+    <bean id="galli_3" class="com.learning.entity.Dinosaur" parent="galli_2">
+        <property name="name" value="galli_member2"/>
+        <property name="age" value="26"/>
+    </bean>
+    <bean id="galli_4" class="com.learning.entity.Dinosaur">
+        <property name="name" value="galli_member3"/>
+        <property name="species" value="gallimimus"/>
+        <property name="age" value="25"/>
+        <property name="health" value="91"/>
+        <property name="popularity" value="68"/>
+    </bean>
+    <bean id="para_1" class="com.learning.entity.Dinosaur">
+        <property name="name" value="para_leader"/>
+        <property name="species" value="parasaurolophus"/>
+        <property name="age" value="43"/>
+        <property name="health" value="100"/>
+        <property name="popularity" value="81"/>
+    </bean>
+    <bean id="para_2" class="com.learning.entity.Dinosaur" parent="para_1">
+        <property name="name" value="para_member1"/>
+        <property name="age" value="42"/>
+    </bean>
+    <bean id="para_3" class="com.learning.entity.Dinosaur" parent="para_1">
+        <property name="name" value="para_member2"/>
+        <property name="age" value="38"/>
+        <property name="health" value="98"/>
+    </bean>
+    <bean id="veloci_1" class="com.learning.entity.Dinosaur">
+        <property name="name" value="raptor_blue"/>
+        <property name="species" value="velociraptor"/>
+        <property name="age" value="22"/>
+        <property name="health" value="99"/>
+        <property name="popularity" value="97"/>
+    </bean>
+    <bean id="veloci_2" class="com.learning.entity.Dinosaur" parent="veloci_1">
+        <property name="name" value="raptor_echo"/>
+        <property name="age" value="21"/>
+    </bean>
+    <bean id="veloci_3" class="com.learning.entity.Dinosaur" parent="veloci_1">
+        <property name="name" value="raptor_charlie"/>
+        <property name="age" value="20"/>
+    </bean>
+    <bean id="veloci_4" class="com.learning.entity.Dinosaur" parent="veloci_1">
+        <property name="name" value="raptor_bravo"/>
+        <property name="age" value="21"/>
+    </bean>
+    <bean id="trex_1" class="com.learning.entity.Dinosaur">
+        <property name="name" value="trex_mom1"/>
+        <property name="species" value="tyrannosaurus_rex"/>
+        <property name="age" value="${trex_1.age}"/>
+        <property name="health" value="99"/>
+        <property name="popularity" value="100"/>
+    </bean>
+    <bean id="trex_2" class="com.learning.entity.Dinosaur" parent="trex_1">
+        <property name="name" value="trex_child1"/>
+        <property name="age" value="${trex_2.age}"/>
+        <property name="health" value="100"/>
+    </bean>
+
+    <bean class="com.learning.DisplayNameBeanPostProcessor" />
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="dino_age_config.properties" />
+    </bean>
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+<!--    Define all the bean post processor beans automatically with this one definition-->
+    <context:annotation-config/>
+
+    <context:component-scan base-package="com.learning"/>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>mymessages</value>
+            </list>
+        </property>
+    </bean>
+</beans>
